@@ -27,10 +27,14 @@ class Dog
     DB[:conn].execute(sql)
   end 
   
+<<<<<<< HEAD
   def save
     if self.id
       self.update
     else
+=======
+  def save 
+>>>>>>> b9bc4ea6664e376f2f1622701cd7405ef430f4ac
     sql = <<-SQL
       INSERT INTO dogs (name, breed) 
       VALUES (?, ?)
@@ -40,6 +44,7 @@ class Dog
     
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
     self
+<<<<<<< HEAD
   end
  
   end 
@@ -104,5 +109,20 @@ class Dog
   end 
   
   
+=======
+ 
+  end 
+  
+  def self.create(hash) #hash = attributes of dog {:name=>"Ralph", :breed=>"lab"}
+    dog = self.new(hash)
+    dog.save #saves the dog as an object and gives it an id 
+  end 
+  
+  
+  def self.new_from_db
+    
+  end 
+  
+>>>>>>> b9bc4ea6664e376f2f1622701cd7405ef430f4ac
   
 end 
